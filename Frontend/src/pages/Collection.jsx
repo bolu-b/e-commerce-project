@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductItem from '../components/ProductItem';
 
-const backendUrl = 'http://localhost:4000';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Collection = () => {
   const [products, setProducts] = useState([]);

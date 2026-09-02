@@ -4,7 +4,7 @@ import axios from 'axios';
 import { ShopContext } from './ShopContextObject';
 
 const ShopContextProvider = (props) => {
-  const backendUrl = 'http://localhost:4000';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [products, setProducts] = useState([]);
   const [token, setToken] = useState(localStorage.getItem('token') || '');
   const [cartItems, setCartItems] = useState({});
@@ -106,6 +106,7 @@ const placeOrder = async (address) => {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     getProductsData();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -113,6 +114,7 @@ const placeOrder = async (address) => {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       getUserCart(token);
     }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   const value = {
