@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import axios from 'axios';
 import { ShopContext } from '../context/ShopContextObject';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const { backendUrl, setToken } = useContext(ShopContext);
@@ -18,11 +19,12 @@ const Login = () => {
       const response = await axios.post(backendUrl + endpoint, payload);
 
       if (response.data.success) {
-        setToken(response.data.token);
-        localStorage.setItem('token', response.data.token);
-      } else {
-        alert(response.data.message);
-      }
+  setToken(response.data.token);
+  localStorage.setItem('token', response.data.token);
+  toast.success(currentState === 'Sign Up' ? 'Account created!' : 'Logged in!');
+} else {
+  toast.error(response.data.message);
+}
     } catch (error) {
       console.log(error);
     }
