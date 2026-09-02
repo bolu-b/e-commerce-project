@@ -1,5 +1,5 @@
 const express = require('express');
-const productModel = require('../models/productModel');
+const productModel = require('../models/productmodel');
 const upload = require('../middleware/multer');
 const { v2: cloudinary } = require('cloudinary');
 const adminAuth = require('../middleware/adminAuth');
